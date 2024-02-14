@@ -32,15 +32,11 @@ public class TaskList {
     }
 
     public Task get(int zeroItem) {
-        Task task = tasks.get(zeroItem);
-        assert task != null : "Task at index " + zeroItem + " should not be null";
         return tasks.get(zeroItem);
     }
 
     public int getSize() {
-        int taskSize = tasks.size();
-        assert taskSize >= 0 : "Size of task list should be greater than or equal to 0";
-        return taskSize;
+        return tasks.size();
     }
 
     /**
@@ -49,7 +45,6 @@ public class TaskList {
      * @param task The task to be added.
      */
     public void add(Task task) {
-        assert task != null : "Task should not be null";
         tasks.add(task);
     }
 
@@ -59,9 +54,7 @@ public class TaskList {
      * @param num The zero-indexed task index to mark as done.
      */
     public void markAsDone(int num) {
-        Task taskToMark = tasks.get(num);
-        assert taskToMark != null : "Task to mark as done cannot be null";
-        taskToMark.markAsDone();
+        tasks.get(num).markAsDone();
     }
 
     /**
@@ -70,9 +63,7 @@ public class TaskList {
      * @param num The zero-indexed task index to mark as not done.
      */
      public void unMarkAsDone(int num) {
-         Task taskToUnMark = tasks.get(num);
-         assert taskToUnMark != null : "Task to mark as not done cannot be null";
-         taskToUnMark.unMarkAsDone();
+        tasks.get(num).unMarkAsDone();
     }
 
     /**
@@ -83,8 +74,7 @@ public class TaskList {
      * of 0 or if one-indexed task number is greater than the size of the task list.
      */
      public void deleteTask(int item) throws DukeException {
-        assert tasks.get(item) != null : "Task to delete cannot be null";
-        if (item >= 0 && item < tasks.size()) {
+        if (item >= 0 && item < tasks.size() && tasks.get(item) != null) {
             tasks.remove(item);
         } else {
             int oneItem = item + 1;
