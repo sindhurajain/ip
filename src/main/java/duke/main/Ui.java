@@ -55,10 +55,10 @@ public class Ui {
      */
     public void displayList(ArrayList<Task> tasks) {
         for (int i = 0; i < tasks.size(); i++) {
-            Task taskAtIndex = tasks.get(i);
-            assert taskAtIndex != null : "Task at index " + i + " is null";
-            String taskToString = String.format("%d. %s\n", i + 1, taskAtIndex);
-            answer.append(taskToString);
+            if (tasks.get(i) != null) {
+                String task = String.format("%d. %s\n", i + 1, tasks.get(i));
+                answer.append(task);
+            }
         }
     }
 
@@ -143,14 +143,12 @@ public class Ui {
                 foundTasks.add(task);
             }
         }
-        answer.append("Here are the matching tasks in your list:\n");
+        answer.append("Here are the matching tasks in your list:");
         for (int i = 0; i < foundTasks.size(); i++) {
-            int oneIndex = i + 1;
-            Task foundTaskAtIndex = foundTasks.get(i);
-            assert foundTaskAtIndex != null : "Task number " + oneIndex +
-                    " of tasks containing " + findWord + " is null";
-            String foundTaskToString = String.format("%d. %s\n", i + 1, foundTaskAtIndex);
-            answer.append(foundTaskToString);
+            if (foundTasks.get(i) != null) {
+                String foundTask = String.format("%d. %s\n", i + 1, foundTasks.get(i));
+                answer.append(foundTask);
+            }
         }
     }
 
